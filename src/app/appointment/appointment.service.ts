@@ -36,7 +36,6 @@ export class AppointmentService {
 
   getUserAppointments(userId: number): Observable<AppointmentAndUserInterface[]> {
     const url = `${this.endpoint}?userId=${userId}`;
-    // const url = `${this.endpoint}?userId=${userId}&_order=desc,asc&_limit=3`;
     return this.http.get<AppointmentAndUserInterface[]>(url);
   }
   

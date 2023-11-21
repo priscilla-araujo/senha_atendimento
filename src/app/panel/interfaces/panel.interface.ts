@@ -3,6 +3,7 @@ export interface PanelInterface {
   username: string;
   datetime: Date;
   finished?: boolean;
+  appointmentId: number;
 }
 
 export type PanelPasswordType =  'A' | 'P';

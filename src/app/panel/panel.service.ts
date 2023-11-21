@@ -24,6 +24,16 @@ export class PanelService {
     );
   }
 
+  getPanelByAppointment(appointmentId: number): Observable<PanelInterface> {
+    const endpoint = `${this.endpoint}?appointmentId=${appointmentId}`; 
+    return this.http.get<PanelInterface>(endpoint)
+  }
+
+  removeByAppointment(appointmentId: number) {
+    const endpoint = `${this.endpoint}?appointmentId=${appointmentId}`; 
+    return this.http.delete<PanelInterface>(endpoint);
+  }
+
   private diffDate(date: Date): boolean {
     const dateParse = new Date(date).toLocaleDateString().replaceAll('/', '');
     const currentDate = new Date().toLocaleDateString().replaceAll('/','');

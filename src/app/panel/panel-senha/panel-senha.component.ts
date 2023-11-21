@@ -1,5 +1,5 @@
 import { PanelInterface } from './../interfaces/panel.interface';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { PanelService } from '../panel.service';
 import { StorageService } from 'src/app/shared/services/storage.service';
@@ -9,7 +9,7 @@ import { StorageService } from 'src/app/shared/services/storage.service';
   templateUrl: './panel-senha.component.html',
   styleUrls: ['./panel-senha.component.scss'],
 })
-export class PanelSenhaComponent implements OnInit {
+export class PanelSenhaComponent implements OnInit, OnDestroy {
   senhasAtendidas: string[] = [];
   senhasPreferenciais: string[] = [];
 
@@ -72,5 +72,9 @@ export class PanelSenhaComponent implements OnInit {
     this.totalPriority = priority.length;
     this.store.set<PanelInterface[]>('normal', normal);
     this.store.set<PanelInterface[]>('priority', priority);
+  }
+
+  ngOnDestroy(): void {
+    this.store.clear();
   }
 }

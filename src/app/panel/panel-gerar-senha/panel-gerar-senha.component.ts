@@ -54,13 +54,14 @@ export class PanelGerarSenhaComponent implements OnInit {
     });
   }
   
-  createNextPassword({ user, datetime }: any) {
+  createNextPassword({ user, datetime, id }: any) {
     const type = user.age >= 60 ? 'P' : 'A';
 
     const payload = {
       username: user.name,
       password: this.makePassword(type),
       datetime: datetime,
+      appointmentId: id
     }
 
     this.payload = payload;

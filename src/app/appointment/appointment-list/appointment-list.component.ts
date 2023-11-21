@@ -4,6 +4,7 @@ import { AppointmentService } from '../appointment.service';
 import { AppointmentAndUserInterface } from '../interfaces/appointment.interface';
 import { FormGroup, FormControl } from '@angular/forms';
 import { SelectFilterInterface } from 'src/app/shared/interfaces/select.interface';
+import { PanelService } from 'src/app/panel/panel.service';
 
 @Component({
   selector: 'app-appointment-list',
@@ -31,7 +32,8 @@ export class AppointmentListComponent implements OnInit {
   
   constructor(
     private appointmentService: AppointmentService,
-    private router: Router
+    private router: Router,
+    private readonly panelService: PanelService
   ) {}
 
   ngOnInit(): void {
@@ -107,7 +109,12 @@ export class AppointmentListComponent implements OnInit {
     this.appointmentService.remove(id).subscribe((success) => {
       if (success) {
         this.appointments = this.appointments.filter((app) => app.id !== id);
-        this.filterAppointments(); 
+        this.filterAppointments();
+        this.panelService.getPanelByAppointment(id).subscribe(p => {
+          if(p) {
+            this.panelService.removeByAppointment(id)
+          }
+        })
       } else {
         console.error('Falha ao remover o agendamento.');
       }
