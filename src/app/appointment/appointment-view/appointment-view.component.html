@@ -1,0 +1,26 @@
+<div class="card" style="width: 50rem;">
+  <div class="card-body" *ngIf="appointment">
+    <h5 class="card-title">{{ appointment.user.name }}</h5>
+    <h6 class="card-subtitle mb-2 text-body-secondary">{{ appointment.user.age }} anos - {{ appointment.user.email }}</h6><br/>
+    <h6 class="card-title"><strong>Histórico dos últimos agendamentos</strong></h6>
+    <div>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col" class="col-4">Especialidades:</th>
+            <th scope="col" class="col-4">Data/Hora:</th>
+            <th scope="col" class="col-4">Cod. Atendimento</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let userAppointment of userAppointments">
+            <td >{{ userAppointment.especialidade }}</td>
+            <td >{{ userAppointment.datetime | date:'dd/MM/yyyy - HH:mm' }}</td>
+            <td> {{userAppointment.code}}</td>
+          </tr>
+        </tbody>
+      </table>     
+    </div>
+  </div>
+</div>
+<div><a type="button" class="btn btn-dark" [routerLink]="['/appointments']" style="margin-top: 10px;">Voltar</a></div>

@@ -1,0 +1,27 @@
+<nav aria-label="breadcrumb">
+  <!-- <ol class="breadcrumb breadcrumb-chevron p-3 bg-body-tertiary rounded-3">
+    <li class="breadcrumb-item">
+      <a class="link-body-emphasis" href="#">
+        <i class="bi bi-house-door-fill"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item">
+      <a class="link-body-emphasis fw-semibold text-decoration-none" href="#">Users</a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">
+      List
+    </li>
+  </ol> -->
+  <ol class="breadcrumb breadcrumb-chevron p-3 bg-body-tertiary rounded-3">
+    <li class="breadcrumb-item">
+      <a class="link-body-emphasis" routerLink="/">
+        <i class="bi bi-house-door-fill"></i>
+      </a>
+    </li>
+    <li *ngFor="let breadcrumb of breadcrumbs" class="breadcrumb-item">
+      <a class="link-body-emphasis fw-semibold text-decoration-none" [routerLink]="breadcrumb.url" routerLinkActive="active">
+        {{ breadcrumb.label }}
+      </a>
+    </li>
+  </ol>
+</nav>

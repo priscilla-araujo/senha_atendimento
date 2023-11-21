@@ -1,0 +1,8 @@
+<input
+  [(ngModel)]="name"
+  [typeahead]="(users$ | async) || []"
+  typeaheadOptionField="name"
+  class="form-control"
+  (typeaheadOnSelect)="onSelect($event)"
+  (blur)="typeaheadOnBlur($event.target)"  
+/>

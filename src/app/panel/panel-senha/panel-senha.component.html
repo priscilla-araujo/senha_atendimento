@@ -1,0 +1,47 @@
+<div class="container">
+  <h2>Painel de Senhas</h2>
+  <div class="row">
+    <div class="col-sm-6 mb-3 mb-sm-0">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Senha chamada</h5>
+          <div class="panel-body">
+            <h1>{{ normal?.password }} - {{normal?.username}}</h1>
+            <h1>{{ priority?.password }} - {{priority?.username}}</h1>
+          </div>
+          <div class="panel-footer">
+            <button class="btn btn-dark" (click)="nextNormal()" style="margin-right: 10px;">Senha Normal</button>
+            <button class="btn btn-dark" (click)="nextPriority()" style="margin-right: 10px;">Senha Preferencial</button>
+            <button class="btn btn-dark" (click)="limparSenhasChamadas()">Limpar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Senhas Normais Atendidas</h5>
+          <div class="panel-body">
+            <ul>
+              <li *ngFor="let senha of senhasAtendidas;">
+                <span>{{ senha }}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="card mt-3">
+        <div class="card-body">
+          <h5 class="card-title">Senhas Preferenciais Atendidas</h5>
+          <div class="panel-body">
+            <ul>
+              <li *ngFor="let senha of senhasPreferenciais;">
+                <span>{{ senha }}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

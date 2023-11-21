@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="col-8">
+    <app-input-search #search [options]="filterBy"></app-input-search>
+  </div>
+    <div class="col-4 d-flex justify-content-end align-items-center">
+    <a type="button" class="btn btn-dark" [routerLink]="['/appointments', 'new']">
+      <i class="bi bi-person-plus-fill"></i>
+      Novo
+    </a>
+  </div>
+</div>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col" class="col-1">#</th>
+      <th scope="col" class="col-4">Nome</th>
+      <th scope="col" class="col-1">Especialidade</th>
+      <th scope="col" class="col-4">Data/Hora</th>
+      <th scope="col" class="col-2">Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let appointment of appointments | filter: search.term: search.filterBy">
+        <td>{{ appointment.id }}</td>
+        <td>{{ appointment.username }}</td>
+        <td>{{ appointment.especialidade }}</td>
+        <td>{{ appointment.datetime | date: 'dd/MM/yyyy HH:mm' }}</td>
+        <td>
+          <a type="button" class="btn" [routerLink]="['/appointments', appointment.id, 'view']">
+            <i class="bi bi-eye"></i>
+          </a>
+          <a type="button" class="btn" (click)="editAppointment(appointment.id)">
+            <i class="bi bi-pencil"></i>
+          </a>
+          <a type="button" class="btn" (click)="deleteAppointment(appointment.id)">
+            <i class="bi bi-trash"></i>
+          </a>
+        </td>
+    </tr>
+    
+  </tbody>
+</table>
